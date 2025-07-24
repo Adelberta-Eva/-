@@ -1,0 +1,965 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/9/2024 11:17:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-OFS4B6BI"
+  DTS:CreatorName="LAPTOP-OFS4B6BI\HONOR"
+  DTS:DTSID="{AC95E4C2-5662-4D5D-AB25-69D9EF830DD1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{8D91F7B4-C943-4BA0-93D9-531E61D886CE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FBD950B6-5075-45BB-98BE-0A9BB8B5D5C7}"
+      DTS:ObjectName="LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-OFS4B6BI\WQY1;Initial Catalog=AdventureWorksDW2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{FBD950B6-5075-45BB-98BE-0A9BB8B5D5C7}LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-OFS4B6BI\WQY1.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{20B952CD-C1F4-4832-AFFE-B64B883312B9}"
+      DTS:ObjectName="LAPTOP-OFS4B6BI\WQY1.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-OFS4B6BI\WQY1;User ID=sa;Provider=MSOLEDBSQL.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACGWQ0w15e0uFgW//w5Ey5gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAuvg4UjOHyaFc7X99RijIirgyZXJUBz+77Bp9wZl5wIQAAAAAOgAAAAAIAACAAAADLnwakCARuJPr7Ro7+mC8Y/XHlcVMtTjYs0ZWAs2ADJRAAAACS9FfojtcOCFL0cdTF4DtKQAAAALaD7hNhntSun8MA48uYcPmVcDX4H+ibCCb0JeS0ybY+sDbSebmiUSZ+roXwQ3H6dWdfPVXOc/kIZrbFHv3y2W4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract Sample Currency Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{E70BED03-56E1-46AA-841D-EBDAC1130A7D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Sample Currency Data">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Sample Currency Data\Extract Sample Currency Data"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="平面文件源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;1"
+              description="平面文件源"
+              localeId="30724"
+              name="Extract Sample Currency Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否将长度为 0 的列视为 Null。"
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含该文件名的输出列的名称。如果未指定名称，则不会生成包含该文件名的输出列。"
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Connections[FlatFileConnection]"
+                  connectionManagerID="{D4967113-EE53-4DD9-A1B2-62F38FEBE353}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[平面文件连接管理器]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出]"
+                  name="平面文件源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[ AverageRate]"
+                      dataType="r4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[ AverageRate]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[ AverageRate]"
+                      name=" AverageRate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示该列是否使用更快、不分区域设置的分析例程。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示数据是否为二进制格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyID]"
+                      length="50"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]"
+                      name="CurrencyID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示该列是否使用更快、不分区域设置的分析例程。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示数据是否为二进制格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyDate]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]"
+                      name="CurrencyDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示该列是否使用更快、不分区域设置的分析例程。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示数据是否为二进制格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]"
+                      dataType="r4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[EndOfDayRate]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]"
+                      name="EndOfDayRate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示该列是否使用更快、不分区域设置的分析例程。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指示数据是否为二进制格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[ AverageRate]"
+                      dataType="r4"
+                      name=" AverageRate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyID]"
+                      dataType="wstr"
+                      length="50"
+                      name="CurrencyID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyDate]"
+                      dataType="dbDate"
+                      name="CurrencyDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[EndOfDayRate]"
+                      dataType="r4"
+                      name="EndOfDayRate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出]"
+                  isErrorOut="true"
+                  name="平面文件源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[平面文件源错误输出列]"
+                      codePage="936"
+                      dataType="text"
+                      description="平面文件源错误输出列"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[平面文件源错误输出列]"
+                      name="平面文件源错误输出列" />
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Sample Currency Data\Lookup Currency Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="查找;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;6"
+              description="通过在表中查找值，将其他列与数据流联接起来。例如，将 &quot;employee id&quot; 列与 employees 表联接，以获取 &quot;hire date&quot; 和 &quot;employee name&quot;。建议在可将查找表放入内存中的情况下使用此转换。"
+              name="Lookup Currency Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定生成查找表的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimCurrency]) as refTable
+where [refTable].[CurrencyAlternateKey] = 'ARS'
+OR
+[refTable].[CurrencyAlternateKey] = 'AUD'
+OR
+[refTable].[CurrencyAlternateKey] = 'BRL'
+OR
+[refTable].[CurrencyAlternateKey] = 'CAD'
+OR
+[refTable].[CurrencyAlternateKey] = 'CNY'
+OR
+[refTable].[CurrencyAlternateKey] = 'DEM'
+OR
+[refTable].[CurrencyAlternateKey] = 'EUR'
+OR
+[refTable].[CurrencyAlternateKey] = 'FRF'
+OR
+[refTable].[CurrencyAlternateKey] = 'GBP'
+OR
+[refTable].[CurrencyAlternateKey] = 'JPY'
+OR
+[refTable].[CurrencyAlternateKey] = 'MXN'
+OR
+[refTable].[CurrencyAlternateKey] = 'SAR'
+OR
+[refTable].[CurrencyAlternateKey] = 'USD'
+OR
+[refTable].[CurrencyAlternateKey] = 'VEB'</property>
+                <property
+                  dataType="System.String"
+                  description="指定使用参数生成查找表的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from (select * from [dbo].[DimCurrency]) as refTable
+where [refTable].[CurrencyAlternateKey] = 'ARS'
+OR
+[refTable].[CurrencyAlternateKey] = 'AUD'
+OR
+[refTable].[CurrencyAlternateKey] = 'BRL'
+OR
+[refTable].[CurrencyAlternateKey] = 'CAD'
+OR
+[refTable].[CurrencyAlternateKey] = 'CNY'
+OR
+[refTable].[CurrencyAlternateKey] = 'DEM'
+OR
+[refTable].[CurrencyAlternateKey] = 'EUR'
+OR
+[refTable].[CurrencyAlternateKey] = 'FRF'
+OR
+[refTable].[CurrencyAlternateKey] = 'GBP'
+OR
+[refTable].[CurrencyAlternateKey] = 'JPY'
+OR
+[refTable].[CurrencyAlternateKey] = 'MXN'
+OR
+[refTable].[CurrencyAlternateKey] = 'SAR'
+OR
+[refTable].[CurrencyAlternateKey] = 'USD'
+OR
+[refTable].[CurrencyAlternateKey] = 'VEB') [refTable]
+where [refTable].[CurrencyAlternateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用于访问引用数据集的连接类型。"
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定查找表的缓存类型。"
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定查找转换如何处理在引用数据集中无匹配项的行。"
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定为在引用数据集中没有匹配项的行分配的缓存百分比。"
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="引用缓存在 32 位平台上的最大内存使用量。"
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="引用缓存在 64 位平台上的最大内存使用量。"
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="指示是否引用 XML 格式的元数据。"
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CurrencyKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyAlternateKey" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="指定世系标识符列表，这些标识符映射到 SQLCommand 属性中 SQL 语句使用的参数。列表中的项与项之间用分号分隔。"
+                  name="ParameterMap">#{Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定当数据源中没有代码页信息时使用的列代码页。"
+                  name="DefaultCodePage">936</property>
+                <property
+                  dataType="System.Boolean"
+                  description="确定在使用完全缓存模式时引用数据中的重复键是否应视作错误。"
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Sample Currency Data\Lookup Currency Key.Connections[OleDbConnection]"
+                  connectionManagerID="{12191D02-5441-4819-BAF4-32C632F86579}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-OFS4B6BI_WQY1.AdventureWorksDW2019 1]"
+                  description="用于访问查找数据的连接管理器。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]"
+                  name="查找输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入].Columns[CurrencyID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CurrencyID"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="指定某列在引用表中联接的列。"
+                          name="JoinToReferenceColumn">CurrencyAlternateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="指定属于某列复制源的引用表中的列。"
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出]"
+                  errorOrTruncationOperation="查找"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="查找匹配输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出].Columns[CurrencyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="复制列"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出].Columns[CurrencyKey]"
+                      name="CurrencyKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="指定属于某列复制源的引用表中的列。"
+                          name="CopyFromReferenceColumn">CurrencyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找无匹配输出]"
+                  description="用于处理在引用数据集中无匹配项的行的查找输出。当 NoMatchBehavior 属性设置为“将没有匹配项的行发送至无匹配输出。”时使用此输出。"
+                  exclusionGroup="1"
+                  name="查找无匹配输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="查找错误输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Sample Currency Data\Lookup Date Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="查找;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;6"
+              description="通过在表中查找值，将其他列与数据流联接起来。例如，将 &quot;employee id&quot; 列与 employees 表联接，以获取 &quot;hire date&quot; 和 &quot;employee name&quot;。建议在可将查找表放入内存中的情况下使用此转换。"
+              name="Lookup Date Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定生成查找表的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="指定使用参数生成查找表的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimDate]) [refTable]
+where [refTable].[FullDateAlternateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用于访问引用数据集的连接类型。"
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定查找表的缓存类型。"
+                  name="CacheType"
+                  typeConverter="CacheType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定查找转换如何处理在引用数据集中无匹配项的行。"
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定为在引用数据集中没有匹配项的行分配的缓存百分比。"
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="引用缓存在 32 位平台上的最大内存使用量。"
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="引用缓存在 64 位平台上的最大内存使用量。"
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="指示是否引用 XML 格式的元数据。"
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullDateAlternateKey" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfWeek" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishDayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpanishDayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FrenchDayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpanishMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FrenchMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MonthNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarSemester" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalSemester" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="指定世系标识符列表，这些标识符映射到 SQLCommand 属性中 SQL 语句使用的参数。列表中的项与项之间用分号分隔。"
+                  name="ParameterMap">#{Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定当数据源中没有代码页信息时使用的列代码页。"
+                  name="DefaultCodePage">936</property>
+                <property
+                  dataType="System.Boolean"
+                  description="确定在使用完全缓存模式时引用数据中的重复键是否应视作错误。"
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Sample Currency Data\Lookup Date Key.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019]"
+                  description="用于访问查找数据的连接管理器。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]"
+                  name="查找输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入].Columns[CurrencyDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CurrencyDate"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="指定某列在引用表中联接的列。"
+                          name="JoinToReferenceColumn">FullDateAlternateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="指定属于某列复制源的引用表中的列。"
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出]"
+                  errorOrTruncationOperation="查找"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="查找匹配输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="复制列"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="指定属于某列复制源的引用表中的列。"
+                          name="CopyFromReferenceColumn">DateKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找无匹配输出]"
+                  description="用于处理在引用数据集中无匹配项的行的查找输出。当 NoMatchBehavior 属性设置为“将没有匹配项的行发送至无匹配输出。”时使用此输出。"
+                  exclusionGroup="1"
+                  name="查找无匹配输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="查找错误输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Sample Currency Data\Sample OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB 目标;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="OLE DB 目标"
+              name="Sample OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用于打开行集的数据库对象的名称。"
+                  name="OpenRowset">[NewFactCurrencyRate2]</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用于打开行集的数据库对象名的变量。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要执行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定当数据源中没有代码页信息时使用的列代码页。"
+                  name="DefaultCodePage">936</property>
+                <property
+                  dataType="System.Boolean"
+                  description="描述字符数据时，强制使用 DefaultCodePage 属性值。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用于访问数据库的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否将为标识列提供的值复制到目标。如果设置为 False，则将在目标中为标识列自动生成值。仅当启用了快速加载时适用。"
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示对于包含 Null 值的列是否将 Null 值插入目标中。如果为 False，则对于包含 Null 值的列会将其默认值插入目标中。仅当启用了快速加载时适用。"
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定将用于快速加载的选项。仅当启用了快速加载时适用。"
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定在插入数据期间何时发出提交命令。如果值为 0，则指定在数据插入结束时发出一个提交命令。仅当启用了快速加载时适用。"
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019]"
+                  description="指定用于访问数据库的 OLE DB 运行时连接。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入]"
+                  errorOrTruncationOperation="插入"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[ AverageRate]"
+                      cachedDataType="r4"
+                      cachedName=" AverageRate"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[ AverageRate]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[ AverageRate]" />
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[CurrencyID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CurrencyID"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyID]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]" />
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[CurrencyDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CurrencyDate"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyDate]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]" />
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[EndOfDayRate]"
+                      cachedDataType="r4"
+                      cachedName="EndOfDayRate"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[EndOfDayRate]"
+                      lineageId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]" />
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[CurrencyKey]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyKey"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyKey]"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出].Columns[CurrencyKey]" />
+                    <inputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[DateKey]"
+                      lineageId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[ AverageRate]"
+                      dataType="r4"
+                      name=" AverageRate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyID]"
+                      dataType="wstr"
+                      length="50"
+                      name="CurrencyID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyDate]"
+                      dataType="dbDate"
+                      name="CurrencyDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[EndOfDayRate]"
+                      dataType="r4"
+                      name="EndOfDayRate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyKey]"
+                      dataType="i4"
+                      name="CurrencyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB 目标错误输出"
+                  synchronousInputId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Sample Currency Data.Paths[平面文件源输出]"
+              endId="Package\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]"
+              name="平面文件源输出"
+              startId="Package\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出]" />
+            <path
+              refId="Package\Extract Sample Currency Data.Paths[查找匹配输出]"
+              endId="Package\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]"
+              name="查找匹配输出"
+              startId="Package\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出]" />
+            <path
+              refId="Package\Extract Sample Currency Data.Paths[查找匹配输出1]"
+              endId="Package\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入]"
+              name="查找匹配输出"
+              startId="Package\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="8">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Extract Sample Currency Data"
+          TopLeft="95.5000001277242,146.34210569781" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract Sample Currency Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Extract Sample Currency Data\Extract Sample Currency Data"
+          TopLeft="5.49999999999997,5.50000000000007" />
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Extract Sample Currency Data\Lookup Currency Key"
+          TopLeft="5.49999999999997,107.1" />
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Extract Sample Currency Data\Lookup Date Key"
+          TopLeft="5.50000000000003,208.7" />
+        <EdgeLayout
+          Id="Package\Extract Sample Currency Data.Paths[平面文件源输出]"
+          TopLeft="123.9,47.1000000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Sample Currency Data.Paths[查找匹配输出]"
+          TopLeft="123.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.47265625,20.4111328125001,60.9453125,11.677734375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Extract Sample Currency Data\Sample OLE DB Destination"
+          TopLeft="5.50000000000003,339.5" />
+        <EdgeLayout
+          Id="Package\Extract Sample Currency Data.Paths[查找匹配输出1]"
+          TopLeft="123.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.2000000000001"
+              Start="0,0"
+              End="0,81.7000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.7000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.47265625,35.0111328125,60.9453125,11.677734375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="数据流从文件提取数据，&#xD;&#xA;查看DimCurrency表&#xD;&#xA;格CurrencyKey列和DimDate&#xD;&#xA;表格DateKey列中的值，&#xD;&#xA;并将数据写入NewFactCurrencyRate表格"
+          ParentId="Package\Extract Sample Currency Data"
+          FontInfo="{assembly:Null}"
+          Size="288.8,100"
+          Id="8de577e7-c094-4299-9274-fd2ec80ee472"
+          TopLeft="302.5,35.3000040978197" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Sample Currency Data\Lookup Currency Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Sample Currency Data\Lookup Date Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Sample Currency Data\Sample OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

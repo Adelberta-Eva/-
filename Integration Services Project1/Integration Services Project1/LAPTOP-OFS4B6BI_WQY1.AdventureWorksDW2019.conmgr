@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-OFS4B6BI_WQY1.AdventureWorksDW2019"
+  DTS:DTSID="{188EC544-E425-43A5-8EE2-9F239027E917}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-OFS4B6BI\WQY1;Initial Catalog=AdventureWorksDW2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Integration Services Project1-{188EC544-E425-43A5-8EE2-9F239027E917}LAPTOP-OFS4B6BI\WQY1.AdventureWorksDW2019;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
